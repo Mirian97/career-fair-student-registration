@@ -8,6 +8,8 @@ import {
   Put,
 } from '@nestjs/common';
 import { Public } from 'src/decorators/public.decorator';
+import { Role } from 'src/roles/enums/roles.enum';
+import { Roles } from 'src/roles/roles.decorator';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 import { LoginDto } from '../users/dto/login.dto';
@@ -18,9 +20,10 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Public()
-  @Post('sign-up')
-  signUp(@Body() signupDto: CreateUserDto) {
-    return this.authService.signUp(signupDto);
+  @Post('register')
+  @Roles(Role.Admin)
+  register(@Body() signupDto: CreateUserDto) {
+    return this.authService.register(signupDto);
   }
 
   @Public()
@@ -31,6 +34,7 @@ export class AuthController {
   }
 
   @Put(':id')
+  @Roles(Role.Admin)
   update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
     return this.authService.update(id, updateUserDto);
   }
