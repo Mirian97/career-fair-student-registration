@@ -65,7 +65,7 @@ export class AuthService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User | null> {
-    const user = await this.userService.findOne(id, true);
+    const user = await this.userService.findById(id, true);
     if (updateUserDto.password) {
       updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
     }

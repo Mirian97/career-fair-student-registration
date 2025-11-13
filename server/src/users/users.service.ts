@@ -21,7 +21,7 @@ export class UsersService {
     return await this.userRepository.find();
   }
 
-  async findOne(id: number, withPassword: boolean = false) {
+  async findById(id: number, withPassword: boolean = false) {
     const selectQueryBuilder = this.userRepository
       .createQueryBuilder('user')
       .where('user.id = :id', { id });
@@ -41,11 +41,11 @@ export class UsersService {
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     await this.userRepository.update(id, updateUserDto);
-    return this.findOne(id);
+    return this.findById(id);
   }
 
   async remove(id: number) {
-    await this.findOne(id);
+    await this.findById(id);
     await this.userRepository.delete(id);
   }
 }
