@@ -4,7 +4,7 @@ import { User } from 'src/users/entities/user.entity';
 export type JwtPayload = {
   id: number;
   name: string;
-  accessRole: Role;
+  role: Role;
 };
 
 export type AuthResponse = {

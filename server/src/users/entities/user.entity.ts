@@ -16,5 +16,5 @@ export class User {
   password: string;
 
   @Column({ type: String, enum: Role, default: Role.Registrar })
-  accessRole: Role;
+  role: Role;
 }
