@@ -4,8 +4,8 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  Patch,
   Post,
+  Put,
 } from '@nestjs/common';
 import { Public } from 'src/decorators/public.decorator';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
@@ -30,7 +30,7 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  @Patch('users/:id')
+  @Put(':id')
   update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
     return this.authService.update(id, updateUserDto);
   }
