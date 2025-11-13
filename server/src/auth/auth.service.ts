@@ -35,9 +35,7 @@ export class AuthService {
     email,
     password,
   }: CreateUserDto): Promise<AuthResponse> {
-    const existingUser = await this.userRepository.findOne({
-      where: { email },
-    });
+    const existingUser = await this.userService.findByEmail(email);
     if (existingUser) {
       throw new EmailInUseException();
     }
@@ -53,9 +51,7 @@ export class AuthService {
   }
 
   async login({ email, password }: LoginDto): Promise<AuthResponse> {
-    const existingUser = await this.userRepository.findOne({
-      where: { email },
-    });
+    const existingUser = await this.userService.findByEmail(email);
     if (!existingUser) {
       throw new InvalidCredentialsException();
     }

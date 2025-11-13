@@ -14,8 +14,7 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const user = this.userRepository.create(createUserDto);
-    return this.userRepository.save(user);
+    return await this.userRepository.save(createUserDto);
   }
 
   async findAll() {
@@ -34,6 +33,10 @@ export class UsersService {
       throw new UserNotFoundException();
     }
     return user;
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.userRepository.findOne({ where: { email } });
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
