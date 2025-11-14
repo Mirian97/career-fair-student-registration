@@ -36,6 +36,6 @@ export class AuthController {
   @Patch(':id')
   @Roles(Role.Admin)
   update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
-    return this.authService.update(id, updateUserDto);
+    return this.authService.update(+id, updateUserDto);
   }
 }

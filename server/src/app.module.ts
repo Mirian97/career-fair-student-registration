@@ -10,6 +10,7 @@ import { RolesGuard } from './roles/roles.guard';
 import { RolesModule } from './roles/roles.module';
 import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
+import { SchoolsModule } from './schools/schools.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { UsersModule } from './users/users.module';
     RolesModule,
     AuthModule,
     UsersModule,
+    SchoolsModule,
   ],
   controllers: [AppController],
   providers: [
