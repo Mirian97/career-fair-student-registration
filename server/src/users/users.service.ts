@@ -52,7 +52,7 @@ export class UsersService {
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     await this.userRepository.update(id, updateUserDto);
-    return this.findById(id);
+    return await this.findById(id);
   }
 
   async remove(id: number, authUser: User) {
