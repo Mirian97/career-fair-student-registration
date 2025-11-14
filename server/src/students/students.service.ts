@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { EmailInUseException } from 'src/users/exceptions/email-in-use.exception';
 import { Repository } from 'typeorm';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
@@ -14,6 +15,12 @@ export class StudentsService {
   ) {}
 
   async create(createStudentDto: CreateStudentDto) {
+    const studentExists = await this.studentRepository.findOneBy({
+      email: createStudentDto.email,
+    });
+    if (studentExists !== null) {
+      throw new EmailInUseException();
+    }
     return await this.studentRepository.save({
       ...createStudentDto,
       school: { id: createStudentDto.school },
