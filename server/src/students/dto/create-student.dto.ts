@@ -36,7 +36,7 @@ export class CreateStudentDto {
   grade: Grade;
 
   @IsNumber()
-  schoolId: number;
+  school: number;
 
   @IsString()
   desiredCourse: string;

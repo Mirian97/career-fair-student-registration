@@ -14,7 +14,10 @@ export class StudentsService {
   ) {}
 
   async create(createStudentDto: CreateStudentDto) {
-    return await this.studentRepository.save(createStudentDto);
+    return await this.studentRepository.save({
+      ...createStudentDto,
+      school: { id: createStudentDto.school },
+    });
   }
 
   async findAll() {
@@ -30,7 +33,10 @@ export class StudentsService {
   }
 
   async update(id: number, updateStudentDto: UpdateStudentDto) {
-    await this.studentRepository.update(id, updateStudentDto);
+    await this.studentRepository.update(id, {
+      ...updateStudentDto,
+      school: { id: updateStudentDto.school },
+    });
     return await this.findOne(id);
   }
 
