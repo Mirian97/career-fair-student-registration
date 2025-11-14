@@ -11,6 +11,7 @@ import { RolesModule } from './roles/roles.module';
 import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
 import { SchoolsModule } from './schools/schools.module';
+import { StudentsModule } from './students/students.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { SchoolsModule } from './schools/schools.module';
     AuthModule,
     UsersModule,
     SchoolsModule,
+    StudentsModule,
   ],
   controllers: [AppController],
   providers: [
