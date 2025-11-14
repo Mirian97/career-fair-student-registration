@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { School } from 'src/schools/entities/school.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Grade } from './grade.enum';
 
 @Entity('students')
@@ -31,9 +32,11 @@ export class Student {
   })
   grade: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  school: string;
-
+  @ManyToOne(() => School, (school) => school.students, {
+    nullable: false,
+    eager: true,
+  })
+  school: School;
   @Column({ type: 'text' })
   desiredCourse: string;
 
