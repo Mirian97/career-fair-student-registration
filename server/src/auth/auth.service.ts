@@ -27,18 +27,16 @@ export class AuthService {
   }
 
   async register({
-    name,
-    email,
     password,
+    ...userDto
   }: CreateUserDto): Promise<AuthResponse> {
-    const existingUser = await this.userService.findByEmail(email);
+    const existingUser = await this.userService.findByEmail(userDto.email);
     if (existingUser) {
       throw new EmailInUseException();
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await this.userService.create({
-      name,
-      email,
+      ...userDto,
       password: hashedPassword,
     });
     const token = await this.generateToken(user);
@@ -47,7 +45,7 @@ export class AuthService {
   }
 
   async login({ email, password }: LoginDto): Promise<AuthResponse> {
-    const existingUser = await this.userService.findByEmail(email);
+    const existingUser = await this.userService.findByEmail(email, true);
     if (!existingUser) {
       throw new InvalidCredentialsException();
     }

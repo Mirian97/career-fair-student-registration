@@ -36,8 +36,18 @@ export class UsersService {
     return user;
   }
 
-  async findByEmail(email: string): Promise<User | null> {
-    return this.userRepository.findOne({ where: { email } });
+  async findByEmail(
+    email: string,
+    withPassword?: boolean,
+  ): Promise<User | null> {
+    const selectQueryBuilder = this.userRepository
+      .createQueryBuilder('user')
+      .where('user.email = :email', { email });
+    if (withPassword) {
+      selectQueryBuilder.addSelect('user.password');
+    }
+    const user = await selectQueryBuilder.getOne();
+    return user;
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
