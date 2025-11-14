@@ -37,6 +37,7 @@ export class Student {
     eager: true,
   })
   school: School;
+
   @Column({ type: 'text' })
   desiredCourse: string;
 
