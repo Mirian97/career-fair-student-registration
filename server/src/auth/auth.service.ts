@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
@@ -9,15 +8,12 @@ import { User } from 'src/users/entities/user.entity';
 import { EmailInUseException } from 'src/users/exceptions/email-in-use.exception';
 import { InvalidCredentialsException } from 'src/users/exceptions/invalid-credentials.exception';
 import { UsersService } from 'src/users/users.service';
-import { Repository } from 'typeorm';
 import { LoginDto } from '../users/dto/login.dto';
 import { AuthResponse } from './auth.type';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
     private jwtService: JwtService,
     private userService: UsersService,
   ) {}
@@ -70,9 +66,9 @@ export class AuthService {
       updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
     }
     if (updateUserDto.email) {
-      const existingUser = await this.userRepository.findOne({
-        where: { email: updateUserDto.email },
-      });
+      const existingUser = await this.userService.findByEmail(
+        updateUserDto.email,
+      );
       if (existingUser != null && existingUser.id !== id) {
         throw new EmailInUseException();
       }
