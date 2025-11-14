@@ -57,7 +57,7 @@ export class UsersService {
 
   async remove(id: number, authUser: User) {
     await this.findById(id);
-    if (authUser.id === id) {
+    if (authUser.id == id) {
       throw new CannotDeleteSelfException();
     }
     await this.userRepository.delete(id);
