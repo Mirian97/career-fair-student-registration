@@ -1,0 +1,30 @@
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Matches,
+  MinLength,
+} from 'class-validator';
+import { Role } from 'src/roles/enums/roles.enum';
+
+export class CreateUserDto {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  @MinLength(8)
+  @Matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]+$/, {
+    message: 'Password must contain at least one letter and one number',
+  })
+  password: string;
+
+  @IsEnum(Role)
+  @IsOptional()
+  role?: Role;
+}
