@@ -4,8 +4,8 @@ export class CannotDeleteSelfException extends HttpException {
   constructor() {
     super(
       {
-        message: 'E-mail já cadastrado',
-        error: 'EMAIL_IN_USE',
+        message: 'Você não pode deletar sua própria conta',
+        error: 'CANNOT_DELETE_SELF',
       },
       HttpStatus.FORBIDDEN,
     );
