@@ -4,8 +4,8 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
-  Put,
 } from '@nestjs/common';
 import { Public } from 'src/decorators/public.decorator';
 import { Role } from 'src/roles/enums/roles.enum';
@@ -33,7 +33,7 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @Roles(Role.Admin)
   update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
     return this.authService.update(id, updateUserDto);
