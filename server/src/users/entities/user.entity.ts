@@ -6,15 +6,21 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   name: string;
 
-  @Column({ unique: true, type: 'varchar', length: 100 })
+  @Column({ unique: true, type: 'varchar', length: 100, nullable: false })
   email: string;
 
-  @Column({ select: false })
+  @Column({ select: false, nullable: false })
   password: string;
 
-  @Column({ type: String, enum: Role, default: Role.Registrar })
+  @Column({
+    type: String,
+    enum: Role,
+    default: Role.Registrar,
+  })
   role: Role;
 }

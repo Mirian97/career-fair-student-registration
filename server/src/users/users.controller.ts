@@ -18,12 +18,12 @@ export class UsersController {
   @Get(':id')
   @Roles(Role.Admin)
   findOne(@Param('id') id: number): Promise<User> {
-    return this.userService.findById(id);
+    return this.userService.findById(+id);
   }
 
   @Delete(':id')
   @Roles(Role.Admin)
   remove(@Param('id') id: number, @AuthUser() authUser: User): Promise<void> {
-    return this.userService.remove(id, authUser);
+    return this.userService.remove(+id, authUser);
   }
 }

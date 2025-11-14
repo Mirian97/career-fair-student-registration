@@ -1,0 +1,595 @@
+type: spec.insomnia.rest/5.0
+name: Challenges
+meta:
+  id: wrk_3247e1eaa9ea44a09e5ac90536049eeb
+  created: 1757888018774
+  modified: 1757888036396
+  description: ""
+collection:
+  - name: Carrer Fair Registration
+    meta:
+      id: fld_cbbfa7d03b9b4e13b839f4071d2c4d1c
+      created: 1763080367791
+      modified: 1763080380674
+      sortKey: -1763080367791
+      description: ""
+    children:
+      - name: users
+        meta:
+          id: fld_fb10f897bebe4e73b2961d203497d449
+          created: 1763118774185
+          modified: 1763118774185
+          sortKey: -1763118774185
+          description: ""
+        children:
+          - url: "{{ _.BASE_URL }}auth/register"
+            name: register
+            meta:
+              id: req_00ddcf6486ee4af9ad6e4eb08ac1f8a8
+              created: 1763080326064
+              modified: 1763134577883
+              isPrivate: false
+              description: ""
+              sortKey: -1763118781247
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"name": "Master user",
+                	"email": "master@email.com",
+                	"password": "pass1234",
+                	"role": "admin"
+                }
+            parameters:
+              - id: pair_920f80447b9d4b1d9bdf18de6dae4837
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+                id: pair_1f0ebb195bed47b29ce7dd90f2bf0df1
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_268eb0f20cb34eed88a500c7a4c4c402
+              - id: pair_4f1c8c2696f441f3b99071c28a020c01
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}auth/5"
+            name: update
+            meta:
+              id: req_6fa0399e71a64b07a5429bde48178457
+              created: 1763081467156
+              modified: 1763134667027
+              isPrivate: false
+              description: ""
+              sortKey: -1763118781297
+            method: PATCH
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"name": "Master user",
+                	"email": "user@email.com",
+                	"password": "pass1234",
+                	"role": "admin"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+                id: pair_32f6636951d140459590f95539a45e30
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}auth/login"
+            name: login
+            meta:
+              id: req_b2cf18761d2b46be8f2705ac2e8424fd
+              created: 1763081562842
+              modified: 1763118783013
+              isPrivate: false
+              description: ""
+              sortKey: -1763118781347
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"email": "mirian@email.com",
+                	"password": "pass1234"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+                id: pair_582fc701462646c89f1df037c552a18d
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_e4de002135d44a51bb9dd5127aaaf9d9
+              - id: pair_37cc7c9f737a4d6aab21eef86a1fa8de
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}users"
+            name: get all
+            meta:
+              id: req_2896ba8614104ee3a4d60cefd78a358d
+              created: 1763117102083
+              modified: 1763118786100
+              isPrivate: false
+              description: ""
+              sortKey: -1763118781272
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}users/1"
+            name: get one
+            meta:
+              id: req_3f751e3ecdb24136ba43ae06afa7c4c6
+              created: 1763117562921
+              modified: 1763134688950
+              isPrivate: false
+              description: ""
+              sortKey: -1763118781259.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}users/1"
+            name: delete one
+            meta:
+              id: req_199bce5b2b3948818d1f53321ae3a5e4
+              created: 1763117605411
+              modified: 1763134694626
+              isPrivate: false
+              description: ""
+              sortKey: -1763118781253.25
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: schools
+        meta:
+          id: fld_d5fb9b6d388b4c3993309e7a5169450a
+          created: 1763128648652
+          modified: 1763128648652
+          sortKey: -1763128648652
+          description: ""
+        children:
+          - url: "{{ _.BASE_URL }}schools/1"
+            name: delete one
+            meta:
+              id: req_a012bd98cc754e27be330fdf02216f1d
+              created: 1763128634845
+              modified: 1763129382429
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249578
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}schools"
+            name: create
+            meta:
+              id: req_b9af0f81a4134208ae1e42aa4d8adf8b
+              created: 1763129166860
+              modified: 1763134716865
+              isPrivate: false
+              description: ""
+              sortKey: -1763128654771
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"name": "E.E. Professor Mauricio Nazar"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}schools/1"
+            name: update
+            meta:
+              id: req_a9eccf35c0604c8bb3acbb1ae9cd08d7
+              created: 1763129302592
+              modified: 1763134727316
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249678
+            method: PATCH
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"name": "E.E. Mauricio Nazar"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}schools"
+            name: get all
+            meta:
+              id: req_e60c9b4229cd4835b6ff59dde6031cdd
+              created: 1763129335529
+              modified: 1763129349194
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249628
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}schools/1"
+            name: get one
+            meta:
+              id: req_30ccca04fddb4fde8f55033fada9fc9c
+              created: 1763129360371
+              modified: 1763129371861
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249603
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: students
+        meta:
+          id: fld_a8d028659c5b4f428d0955202ae10dbb
+          created: 1763129419868
+          modified: 1763129419868
+          sortKey: -1763123711418.5
+          description: ""
+        children:
+          - url: "{{ _.BASE_URL }}students"
+            name: create
+            meta:
+              id: req_5126ecaf2bc84a1aadb72abc00e84ef9
+              created: 1763129419869
+              modified: 1763130714453
+              isPrivate: false
+              description: ""
+              sortKey: -1763128654771
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "name": "Ana Carolina Souza",
+                  "email": "ana.silva@example.com",
+                  "cpf": "123.456.789-10",
+                  "phone": "(11) 98765-4321",
+                  "birthDate": "2006-03-15",
+                  "grade": "third-high-school",
+                  "school": 2,
+                  "desiredCourse": "Engenharia de Software",
+                  "observation": "Possui bom desempenho em matemática e lógica."
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}students/5"
+            name: delete one
+            meta:
+              id: req_93bc16eacee44be3b55d9780715ab3da
+              created: 1763129419869
+              modified: 1763132409827
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249578
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}students/7"
+            name: update
+            meta:
+              id: req_ceac3283863944b197cc66ca4eecd6c1
+              created: 1763129419869
+              modified: 1763132356609
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249678
+            method: PATCH
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "name": "Ana Carolina Souza",
+                  "email": "ana.silva@example.com",
+                  "cpf": "123.456.789-10",
+                  "phone": "(11) 98765-4321",
+                  "birthDate": "2006-03-15",
+                  "grade": "third-high-school",
+                  "school": 2,
+                  "desiredCourse": "Engenharia de Software",
+                  "observation": "Possui bom desempenho em matemática e lógica."
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}students"
+            name: get all
+            meta:
+              id: req_f2d25e97c15f4524b4d5f596a8ad023f
+              created: 1763129419869
+              modified: 1763129434117
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249628
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.BASE_URL }}students/7"
+            name: get one
+            meta:
+              id: req_6e409157242a40e7aa3b869b394bad5f
+              created: 1763129419870
+              modified: 1763132398956
+              isPrivate: false
+              description: ""
+              sortKey: -1763121249603
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+                id: pair_55d240d7304f47e9b6007e972662a118
+              - id: pair_c690dbfa2a044f7e9738648b170f974a
+                name: Authorization
+                value: "{{ _.TOKEN }}"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_991756a826d9e2056e4c9c1332673250df806ac8
+    created: 1757888018807
+    modified: 1757888018807
+environments:
+  name: Base Environment
+  meta:
+    id: env_991756a826d9e2056e4c9c1332673250df806ac8
+    created: 1757888018806
+    modified: 1763116714773
+    isPrivate: false
+  data:
+    BASE_URL: http://localhost:3000/
+    TOKEN: Bearer {% response 'body', 'req_b2cf18761d2b46be8f2705ac2e8424fd',
+      'b64::JC50b2tlbg==::46b', 'never', 60 %}
+  subEnvironments:
+    - name: Production
+      meta:
+        id: env_05ff7c04411842639d79ae1d87a85ab4
+        created: 1761826933404
+        modified: 1761827029080
+        isPrivate: false
+        sortKey: 1761826933404
+      data:
+        BASE_URL: https://car-reservation-system-server.vercel.app/
+        TOKEN:
+          Bearer {% response 'body', 'req_93e6b98fa5a44cdfa54a16b06e78a90f',
+          'b64::JC50b2tlbg==::46b', 'never', 60 %}
+spec:
+  meta:
+    id: spc_309f7b31301f4935ac4e85d69b46d9f8
+    created: 1757888018784
+    modified: 1757888036394

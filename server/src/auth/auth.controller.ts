@@ -19,7 +19,6 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Public()
   @Post('register')
   @Roles(Role.Admin)
   register(@Body() signupDto: CreateUserDto) {
@@ -36,6 +35,6 @@ export class AuthController {
   @Patch(':id')
   @Roles(Role.Admin)
   update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
-    return this.authService.update(id, updateUserDto);
+    return this.authService.update(+id, updateUserDto);
   }
 }
