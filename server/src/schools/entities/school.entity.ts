@@ -5,6 +5,9 @@ export class School {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    unique: true,
+    nullable: false,
+  })
   name: string;
 }
