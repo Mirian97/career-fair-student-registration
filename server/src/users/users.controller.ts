@@ -1,4 +1,5 @@
 import { Controller, Delete, Get, Param } from '@nestjs/common';
+import { AuthUser } from 'src/decorators/auth-user.decorator';
 import { Role } from 'src/roles/enums/roles.enum';
 import { Roles } from 'src/roles/roles.decorator';
 import { User } from './entities/user.entity';
@@ -22,7 +23,7 @@ export class UsersController {
 
   @Delete(':id')
   @Roles(Role.Admin)
-  remove(@Param('id') id: number): Promise<void> {
-    return this.userService.remove(id);
+  remove(@Param('id') id: number, @AuthUser() authUser: User): Promise<void> {
+    return this.userService.remove(id, authUser);
   }
 }

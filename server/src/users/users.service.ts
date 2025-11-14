@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { CannotDeleteSelfException } from './exceptions/cannot-delete-self-exception';
 import { UserNotFoundException } from './exceptions/user-not-found.exception';
 
 @Injectable()
@@ -44,8 +45,11 @@ export class UsersService {
     return this.findById(id);
   }
 
-  async remove(id: number) {
+  async remove(id: number, authUser: User) {
     await this.findById(id);
+    if (authUser.id === id) {
+      throw new CannotDeleteSelfException();
+    }
     await this.userRepository.delete(id);
   }
 }
