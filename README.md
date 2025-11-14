@@ -146,7 +146,7 @@ TypeOrmModule.forRoot({
 ```
 PORT=3000
 
-DB_HOST=postgres
+DB_HOST=postgres //for local use localhost
 DB_PORT=5432
 DB_USERNAME=admin
 DB_PASSWORD=pass1234
